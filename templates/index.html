@@ -2,11 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flatmates Bill</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
 </head>
-<body>
-<h2>Flatmates' Bill</h2>
-<p>This web app is useful to split a bill between two flatmates.</p>
-<a href="{{ url_for('bill') }}">Got to the bill page</a>
+<body style="min-height: 100vh">
+
+<!-- Navbar -->
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ url_for('home') }}">
+            <strong>Flatmates Bill</strong>
+        </a>
+    </div>
+</nav>
+
+<!-- Main content -->
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="box">
+                    <h2 class="title is-2 has-text-centered">Welcome to Flatmates' Bill</h2>
+                    <p class="subtitle is-4 has-text-centered">Easily split bills between flatmates</p>
+                    <p class="mb-4 has-text-centered">This web app helps you to fairly split a bill between two flatmates, ensuring that everyone pays their fair share. It's simple, quick, and efficient.</p>
+                    <div class="buttons is-centered">
+                        <a href="{{ url_for('bill') }}"
+                           class="button is-link is-large capitalize">Go to the bill page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer mt-auto">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Flatmates Bill</strong>. The source code is licensed
+            <a href="https://opensource.org/license/gpl-3.0">MIT</a>.
+        </p>
+    </div>
+</footer>
+
 </body>
 </html>

@@ -2,35 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flatmates Bill</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
 </head>
 <body>
-<h2>The Bill Form</h2>
-<p>Fill in the form and click the button to get the results</p>
-<form action="{{ url_for('bill') }}" method="post">
-    {{ bill_form.amount.label }} {{ bill_form.amount }}
-    <br>
-    {{ bill_form.period.label }} {{ bill_form.period }}
-    <hr>
-    <h4>First Flatmate</h4>
-    {{ bill_form.name1.label }} {{ bill_form.name1 }}
-    <br>
-    {{ bill_form.days_in_house1.label }} {{ bill_form.days_in_house1 }}
-    <hr>
-    <h4>Second Flatmate</h4>
-    {{ bill_form.name2.label }} {{ bill_form.name2 }}
-    <br>
-    {{ bill_form.days_in_house2.label }} {{ bill_form.days_in_house2 }}
-    <br>
-    {{ bill_form.button }}
-    {% if result %}
-        <hr>
-        <h4>Results</h4>
-        {{ name1 }} pays {{ amount1 }}
-        <br>
-        {{ name2 }} pays {{ amount2 }}
-    {% endif %}
-</form>
+
+<!-- Navbar -->
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ url_for('home') }}">
+            <strong>Flatmates Bill</strong>
+        </a>
+    </div>
+</nav>
+
+<!-- Main content -->
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="box">
+                    <h2 class="title is-2 has-text-centered">The Bill Form</h2>
+                    <p class="subtitle is-4 has-text-centered">Fill in the form and click the button to get the results</p>
+
+                    <!-- Form -->
+                    <form action="{{ url_for('bill') }}" method="post">
+                        <div class="field">
+                            <label class="label">{{ bill_form.amount.label }}</label>
+                            <div class="control">
+                                {{ bill_form.amount(class="input") }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">{{ bill_form.period.label }}</label>
+                            <div class="control">
+                                {{ bill_form.period(class="input") }}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h4 class="title is-4">First Flatmate</h4>
+                        <div class="field">
+                            <label class="label">{{ bill_form.name1.label }}</label>
+                            <div class="control">
+                                {{ bill_form.name1(class="input") }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ bill_form.days_in_house1.label }}</label>
+                            <div class="control">
+                                {{ bill_form.days_in_house1(class="input") }}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h4 class="title is-4">Second Flatmate</h4>
+                        <div class="field">
+                            <label class="label">{{ bill_form.name2.label }}</label>
+                            <div class="control">
+                                {{ bill_form.name2(class="input") }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">{{ bill_form.days_in_house2.label }}</label>
+                            <div class="control">
+                                {{ bill_form.days_in_house2(class="input") }}
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped is-grouped-centered">
+                            <div class="control">
+                                {{ bill_form.button(class="button is-link is-large") }}
+                            </div>
+                        </div>
+
+                        {% if result %}
+                            <hr>
+                            <h4 class="title is-4">Results</h4>
+                            <div class="notification is-link">
+                                <p>{{ name1 }} pays {{ amount1 }}</p>
+                                <p>{{ name2 }} pays {{ amount2 }}</p>
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Flatmates Bill</strong>. The source code is licensed
+            <a href="https://opensource.org/license/gpl-3.0">MIT</a>.
+        </p>
+    </div>
+</footer>
+
 </body>
 </html>
